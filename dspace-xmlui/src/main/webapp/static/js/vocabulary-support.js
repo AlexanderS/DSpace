@@ -114,19 +114,19 @@
                                 vocabularyDialog.find('input[name="filter_button"]').click(function(){
                                     var $this = $(this);
                                     var filterValue = $this.parent().find('input[name="filter"]').val();
+                                    var vocabularyList = vocabularyDialog.find('ul#vocabulary-list');
                                     var displayElements;
+
                                     if(0 < filterValue.length){
                                         //Perform the filtering
                                         //Start by hiding all the urls in our box
-                                        var vocabularyList = vocabularyDialog.find('ul#vocabulary-list');
-                                        vocabularyList.hide();
                                         vocabularyList.find('li').hide();
                                         var displayUrls = $('a[filter*="' + filterValue.toLowerCase() + '"]');
                                         //Retrieve all the parents of these urls & display them
                                         displayElements = displayUrls.parents('ul,li');
                                     }else{
                                         //Display them all !
-                                        displayElements = vocabularyDialog.find('ul,li');
+                                        displayElements = vocabularyList.find('ul,li');
                                     }
                                     displayElements.show();
                                     //Flip class from closed to open
